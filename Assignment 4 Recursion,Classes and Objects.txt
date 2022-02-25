@@ -1,0 +1,237 @@
+# Made by Kamalpreet Singh Bachhal
+# SID 21103029 Branch CSE
+
+# -----------------------Q1------------------------
+print(">>>>>>>>>>>>>>>>>>>Q1<<<<<<<<<<<<<<<<<<<<<")
+
+#Recursive Python function to Solve the Tower of Hanoi Problem
+def Tower_Of_Hanoi(n, source_rod, destination_rod, helping_rod):#Here in this problem we have three rods in which we put disc
+    if n == 1:#Here n is the number of disks
+        print("Move disk 1 from source", source_rod, "to destination",destination_rod)
+        return
+    Tower_Of_Hanoi(n - 1, source_rod, helping_rod, destination_rod)
+    print("Move disk", n, "from source", source_rod, "to destination", destination_rod)
+    Tower_Of_Hanoi(n - 1, helping_rod,destination_rod, source_rod)
+"""The Recursive function for Solving The Tower of Hanoi works on the principle that we in the next function call change
+the source rod ,destination rod and auxiliary or intermediate rod to source rod ,auxiliary or intermediate rod and 
+destination rod respectively which is further changed in the next function call"""
+print("The Solution for solving the Tower of Hanoi Problem for Three disks")
+Tower_Of_Hanoi(3, 'A', 'B', 'C')
+
+print("---------------------+++++++++++++++------------------------")
+
+# -----------------------Q2------------------------
+print(">>>>>>>>>>>>>>>>>>>Q2<<<<<<<<<<<<<<<<<<<<<")
+
+p=int(input("Enter the number upto which we want to print the Pascal Triangle="))
+#Defining the Factorial as it will be later used in Defining nCr
+def fact(n):
+    if n==0:#As 0! also has value equal to 1
+        return 1
+    else:
+        return n*fact(n-1)
+
+#Creating The nCr formula
+def C(n,r):#Defined as it is required for creating the values in the Pascal Triangle
+    Combinatrics=fact(n)/(fact(r)*fact(n-r))
+    return Combinatrics
+
+a=0 #Used as a variable for Defining the While loop
+while a<p+1:#The condition for how down we will go in the Pascal Triangle
+    for r in range(0,p+1):#r is the looping variable and is used for Upper index variation in nCr for each value of the row of the Pascal Triangle
+        lst = []
+        a = a + 1
+        for i in range(0,r+1):#i is the looping variable and is used for Lower index variation in nCr for each value of the row of the Pascal Triangle
+            lst.append(C(r,i))
+        print(lst)
+
+print("---------------------+++++++++++++++------------------------")
+
+# -----------------------Q3------------------------
+print(">>>>>>>>>>>>>>>>>>>Q3<<<<<<<<<<<<<<<<<<<<<")
+
+a=int(input("Enter the Dividend="))
+b=int(input("Enter the Divisor="))
+Quo,Remaind=divmod(a,b)
+tup=Quo,Remaind
+print("The Quotient obtained is=",Quo)
+print("The Remainder obtained is=",Remaind)
+lst=list(tup)
+print("The List of the output obtained is=",lst)
+
+#Part 1
+#Callable is Something that can be called
+"""Callable function in Python means either function of a class or a function whose return value
+is stored inside some variable(which then will act like an object for the function) and then that
+variable is passed to callable function"""
+#In Python we can check whether a function is callable or not by using an Inbuilt Python function named callable()
+if callable(divmod(a,b))==True:
+    print("The Divmod Function is callable")
+else:
+    print("The Divmod Function is not Callable")
+
+#Part 2
+if lst==[0,0] or lst==[0,Remaind] or lst==[Quo,0]:
+    print("All the values are not nonzero")
+else:
+    print("All the values are not nonzero")
+
+#Part 3 and 4
+lst1=lst+[4,5,6]
+print("After adding 4,5 and 6 to our result gives",lst1)
+Set1=set(lst1)
+print("Converting the List to Set Datatype")
+print("The Set1 is=",Set1)
+Set2={0,1,2,3}
+Required_Set=Set1-Set2
+print("The Required Set is=",Required_Set)
+
+#Part 5
+"""A set is an unordered collection of items. Every set element is unique (no duplicates) and must be immutable
+(cannot be changed). However, a set itself is mutable. We can add or remove items from it."""
+"""Set elements are immutable but the set itself is a mutable object, so in order to make an immutable set, we use the
+concept of frozenset . The frozen set returns an immutable version of a Python set object."""
+"""We can modify the elements of a set at any time by adding or deleting elements, but frozen sets do not allow any 
+modification after its creation."""
+Immutable_Set=frozenset(Required_Set)
+#Or the Other way to do this was-
+Immut_Set=Required_Set
+print("To make the Set immutable, we have used frozenset function")
+"""Now As we have done aliasing,so the two sets would imply to the same set but by doing aliasing the effects of 
+operations on one set would not affect the other unlike lists and thus by an indirect way we have made the set 
+to be immutable by creating a original and a copy and keeping the copy to be fixed while performing operations 
+on the original,unaffecting the copy"""
+
+#Part 6
+print("The maximum value in the Set is=",max(Required_Set))
+print("The Hashed value of the maximum value obtained from the Set is=",hash(max(Required_Set)))
+print("The Inbuilt Python Hashing function generally returns the same integer value which is given as input ")
+
+print("---------------------+++++++++++++++------------------------")
+
+# -----------------------Q4------------------------
+print(">>>>>>>>>>>>>>>>>>>Q4<<<<<<<<<<<<<<<<<<<<<")
+
+class Student():
+    def __init__(self,name,roll_no):
+        self.name=name
+        self.roll_no=roll_no
+        print("The object is created\nAnd the values reference's provided through the object to the class has been stored")
+        print("Student name=",name)
+        print("Student Roll Number",roll_no)
+    def __del__(self):
+        print("Destructor is called")
+        print("The object and assignments made through it are deleted")
+
+stu1=Student("Ram",21103000)
+stu2=Student("Shyam",21103001)
+stu3=Student("Lakshman",21103002)
+
+del stu3
+print("The Code ends")
+"""At the end of the program,The Python Garbage Collector automatically calls the Destructor to delete all the created
+objects in order to reclaim memory"""
+
+print("---------------------+++++++++++++++------------------------")
+
+# -----------------------Q5------------------------
+print(">>>>>>>>>>>>>>>>>>>Q5<<<<<<<<<<<<<<<<<<<<<")
+
+class Employees():
+    def __init__(self,name,salary):
+        self.name = name
+        self.salary = salary
+
+    def Info(self):
+     print("Employee Name=",self.name)
+     print("Employee Salary=", self.salary)
+     print("\n")
+
+emp1=Employees("Mehak","40000")
+emp2=Employees("Ashok","50000")
+emp3=Employees("Viren","60000")
+
+emp1.Info()
+emp2.Info()
+emp3.Info()
+
+#Updating the Salary of The Employee Mehak
+print("Updating the Salary of The Employee Mehak")
+emp1.salary="70000"
+emp1.Info()
+emp2.Info()
+emp3.Info()
+
+
+#Deleting the record of the Employee Viren
+print("Deleting the record of the Employee Viren")
+del emp3
+emp1.Info()
+emp2.Info()
+print("On Doing emp3.Info(), we will receive an error message")
+print("The error states that  emp3.Info()  \n NameError: name 'emp3' is not defined")
+
+print("We receive an Error as we are trying to use a class function on the object emp3\nBut by using del,that object has been deleted")
+print("As it does not exists,but still we are trying to use it so we get an error")
+
+print("---------------------+++++++++++++++------------------------")
+
+# -----------------------Q6------------------------
+print(">>>>>>>>>>>>>>>>>>>Q6<<<<<<<<<<<<<<<<<<<<<")
+print("-----------------1st way to do it------------------------") #Using Anagrams
+
+print("Friendship Test")
+print("George and Barbie-Make Sure to enter a Meaningful word")
+# Here the Code Involves use of the Concept of Anagrams
+""" If Word given by Barbie is one of the Anagram of the word said by George,then we can say Barbie has used all the
+letters of the word said by George"""
+str1 = input("George Enter a Word=")
+str2 = input("Barbie Enter a Word=")
+
+def anagrams(str):
+    if str == "":
+        return [str]
+    else:
+        lst = []
+        for i in anagrams(str[1:]):
+            for pos in range(len(i) + 1):
+                lst.append(i[:pos] + str[0] + i[pos:])
+        return lst
+
+
+if str2 in anagrams(str1):
+    print("Barbie and George are True Friends")
+else:
+    print("Barbie and George are Fake Friends")
+
+print("---------------------+++++++++++++++------------------------")
+
+print("-----------------2nd way to do it------------------------")
+
+print("Friendship Test")
+"""The Friendship Test involves George to say a Word and for Barbie to make some other word using letters of the word 
+given by George"""
+"""If Barbie is able to do that,It proves the Friendship bonding between the two"""
+print("George and Barbie-Make Sure to enter a Meaningful word")
+str1=input("George Enter a Word=")
+str2=input("Barbie Enter a Word=")
+lst1=[]
+lst2=[]
+for i in str1:
+    lst1.append(i)
+for j in str2:
+    lst2.append(j)
+if lst1 == lst2:
+    print("Barbie and George are True Friends")
+else:
+    print("Barbie and George are Fake Friends")
+
+print("---------------------+++++++++++++++------------------------")
+
+
+
+
+
+
+
+
